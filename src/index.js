@@ -18,12 +18,13 @@ let imageToFind;
 
 refs.btn.addEventListener('click', onBtnClick);
 refs.form.addEventListener('input', onFormInput);
+window.addEventListener('scroll', onScroll);
 
 function onBtnClick(event) {
   page = 1;
   event.preventDefault();
   clearGallary();
-  imageToFind = renderMarkup();
+  imageToFind + renderMarkup();
 }
 
 function onFormInput() {
@@ -31,7 +32,7 @@ function onFormInput() {
   return imageToFind;
 }
 
-const lightbox = new SimpleLightbox('.gallary a', {
+const newLightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionPosition: 'bottom',
   captionDelay: 250,
@@ -40,7 +41,7 @@ const lightbox = new SimpleLightbox('.gallary a', {
 function getMarkup(img) {
   const markup = galleryPhotoTmp(img);
   refs.gallery.insertAdjacentHTML('beforeend', markup);
-  lightbox.refresh();
+  newLightbox.refresh();
 }
 
 async function renderMarkup() {
@@ -67,4 +68,13 @@ async function renderMarkup() {
 
 function clearGallary() {
   refs.gallery.innerHTML = '';
+}
+
+function onScroll() {
+  const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+
+  if (scrollTop + clientHeight > scrollHeight - 40) {
+    page += 1;
+    renderMarkup();
+  }
 }
