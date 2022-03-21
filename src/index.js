@@ -24,7 +24,7 @@ function onBtnClick(event) {
   page = 1;
   event.preventDefault();
   clearGallary();
-  imageToFind + renderMarkup();
+  imageToFind && renderMarkup();
 }
 
 function onFormInput() {
