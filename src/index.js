@@ -3,7 +3,7 @@ import { fetchImage } from './js/fetchImage';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import galleryPhotoTmp from './templates/photo_card.hbs';
+import galleryPhotoTmp from './js/templates/photo_card.hbs';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
